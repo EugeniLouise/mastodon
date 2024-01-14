@@ -1,0 +1,4 @@
+
+
+class MastodonToot:
+    pass
