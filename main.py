@@ -1,14 +1,12 @@
 
 import time
-import random
-from mastodon_api import MastodonApi #Mastodon API conection class
-from get_toot import GetToot # Get toot from public timeline class
+from mastodon_api import MastodonApi
 
 #Initialize the instance
 mastodon = MastodonApi().mastodon()
 
 while True:
-    toots = GetToot().get_toot() #obtaining toots data
+    toots = MastodonApi().get_toot() #obtaining toots data
 
     # Pick a random toot
     if toots:
