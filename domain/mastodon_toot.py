@@ -6,4 +6,4 @@ class Toot:
 
 
 
-#init del tot amb els outputs que volem
+#definim la entiti toot amb l'init de tot els outputs que volem

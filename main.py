@@ -1,6 +1,6 @@
 
 import time
-from mastodon_proxy import MastodonProxy
+from proxies.mastodon_proxy import MastodonProxy
 
 #Initialize the instance
 mastodon = MastodonProxy().mastodon()
