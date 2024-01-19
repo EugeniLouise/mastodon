@@ -1,12 +1,12 @@
 
 import time
-from mastodon_api import MastodonApi
+from mastodon_proxy import MastodonProxy
 
 #Initialize the instance
-mastodon = MastodonApi().mastodon()
+mastodon = MastodonProxy().mastodon()
 
 while True:
-    toots = MastodonApi().get_toot() #obtaining toots data
+    toots = MastodonProxy().get_toot() #obtaining toots data
 
     # Pick a random toot
     if toots:
