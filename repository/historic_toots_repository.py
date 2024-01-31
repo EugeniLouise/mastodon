@@ -3,29 +3,33 @@
 import pandas as pd
 from proxies.mastodon_proxy import MastodonProxy
 
-def guardar_toots_en_excel(nuevos_toots, nombre_archivo='toots.xlsx'):
-    df_existente = pd.read_excel(nombre_archivo)
+class TootSaver:
+    def __init__(self, filename='toots.xlsx'):
+        self.filename = filename
+        self.mastodon_proxy = MastodonProxy()
 
-    # Convertir los nuevos toots en un DataFrame
-    data = [{'id': toot['id'], 'Language': toot['language'], 'Username': toot['account']['username'], 'Created at': pd.to_datetime(toot['created_at']).replace(tzinfo=None), 'Content': toot['content']} for toot in nuevos_toots]
-    df_nuevos = pd.DataFrame(data)
+    def save_toots_to_excel(self):
+        new_toots = self.mastodon_proxy.get_toot() # Get new toots
 
-    # Concatenar los DataFrames existente y nuevos
-    df_total = pd.concat([df_existente, df_nuevos], ignore_index=True)
+        try:
+            existing_df = pd.read_excel(self.filename)
+        except FileNotFoundError:
+            existing_df = pd.DataFrame()
 
-    # Guardar el DataFrame resultante en el archivo Excel
-    df_total.to_excel(nombre_archivo, index=False)
+        # Convert new toots to a DataFrame
+        data = [{'id': toot['id'], 'Language': toot['language'], 'Username': toot['account']['username'], 'Created at': pd.to_datetime(toot['created_at']).replace(tzinfo=None), 'Content': toot['content']} for toot in new_toots]
+        new_df = pd.DataFrame(data)
 
-# Inicializar la instancia de MastodonProxy
-mastodon_proxy = MastodonProxy()
+        # Concatenate existing and new DataFrames
+        total_df = pd.concat([existing_df, new_df], ignore_index=True)
 
-# Obtener nuevos toots
-nuevos_toots = mastodon_proxy.get_toot()
+        # Save the resulting DataFrame to the Excel file
+        total_df.to_excel(self.filename, index=False)
 
-# Guardar los nuevos toots en el archivo Excel
-guardar_toots_en_excel(nuevos_toots)
-
-print("Nuevos toots agregados a 'toots.xlsx'")
+# Using the class
+toot_saver = TootSaver()
+toot_saver.save_toots_to_excel()
+print("New toots added to 'toots.xlsx'")
 
 
 #agafa cada toot que ha trobat (DE RECOLECTED TOOTS) i el guarda en un excel que crea (cada fila un toot, cada columna un atribut).
