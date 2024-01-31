@@ -13,8 +13,7 @@ class MastodonProxy:
     def mastodon(self):
         return mastodon
 
-    def get_toot(self, limit=100, idiomas=['en', 'es']):
+    def get_toot(self, limit=50):
         todos_toots = mastodon.timeline_public(limit=limit)
-        toots_filtrados = [toot for toot in todos_toots if toot['language'] in idiomas]
         return todos_toots
 
