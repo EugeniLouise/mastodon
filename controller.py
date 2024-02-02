@@ -1,33 +1,20 @@
 
 
-from proxies.mastodon_proxy import MastodonProxy
+from proxy.mastodon_proxy import MastodonProxy
+from uses_cases.toot_collector import TootCollector
+from uses_cases.toot_by_language import TootByLanguage
+from repository.toot_repository import TootRepository
+from repository.language_stats_repository import LanguageStatsRepository
 
-# Orquestador que utiliza MastodonProxy para obtener toots
-class Orchestrator:
-    def __init__(self, mastodon_proxy):
-        self.mastodon_proxy = mastodon_proxy
+class TootController:
+    def __init__(self):
+        self.mastodon_proxy = MastodonProxy()
+        self.toot_collector = TootCollector(self.mastodon_proxy)
+        self.toot_saver = TootRepository()
+        self.language_stats_saver = LanguageStatsRepository()
 
-    def get_recent_toots(self):
-        # Llama a MastodonProxy para obtener los toots más recientes
-        return self.mastodon_proxy.get_toot()
-
-
-# Uso del código
-mastodon_proxy = MastodonProxy()
-toot_orchestrator = Orchestrator(mastodon_proxy)
-
-recent_toots = toot_orchestrator.get_recent_toots()
-
-# Mostrar los toots
-for toot in recent_toots:
-    print(f"{toot['account']['username']}: {toot['content']}")
-
-"""
-1. call api
-mastodon_api = MastodonProxy().mastodon()
-
-"""
-
-
-#clase que crida a totes les altres per nar fent.
-#en el main: crida al controller i executa by time sleep.
+    def run(self):
+        toots = self.toot_collector.collect_latest_toots()
+        self.toot_saver.save_toots_to_excel(toots)
+        language_stats = TootByLanguage(toots).calculate_language_stats()
+        self.language_stats_saver.save_language_stats_to_excel(language_stats)

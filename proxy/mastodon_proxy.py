@@ -1,3 +1,4 @@
+
 from mastodon import Mastodon
 
 # Initialize Mastodon API
@@ -7,13 +8,10 @@ mastodon = Mastodon(
     access_token='X0FwiBlDTKKo-FUAZ7uc26IE_cPZI1D0tFZMUzrgvP8',
     api_base_url='https://mastodon.social')
 
-
-# Mastodon API conection class
 class MastodonProxy:
-    def mastodon(self):
-        return mastodon
+    def __init__(self):
+        self.mastodon = mastodon
 
-    def get_toot(self, limit=50):
-        todos_toots = mastodon.timeline_public(limit=limit)
-        return todos_toots
-
+    def get_latest_toots(self, limit=50):
+        toots = self.mastodon.timeline_public(limit=limit)
+        return toots
