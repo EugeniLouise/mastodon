@@ -5,6 +5,7 @@
 # Directorios de entornos virtuales
 venv
 venv/
+.env
 
 # Caches de pruebas
 .cache
