@@ -8,3 +8,7 @@
 venv
 venv/
 
+
+# Caches de pruebas
+.cache
+.pytest_cache/
