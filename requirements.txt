@@ -4,4 +4,4 @@ Mastodon.py
 pytest
 pandas
 
-#Para que te intale estos requirements, escribir en la terminal: pip install -r requirements.txt
+#Para que te instale estos requirements, escribir en la terminal: pip install -r requirements.txt
