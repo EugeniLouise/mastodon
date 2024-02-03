@@ -13,3 +13,7 @@ venv/
 # Carpeta ignore con archivo ignore_me
 ignore/
 ignore/ignore_me
+
+#Si la carpeta ya estaba añadida a Git, para borrarla hayq ue hacerlo desde la terminal.
+#para borrarla: git rm -r --cached ignore/
+#hacer el commit para guardar cambios: git commit -m "Removed 'ignore' folder from tracking"
