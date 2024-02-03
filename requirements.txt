@@ -1,1 +1,7 @@
+#Especificar las dependencias de paquetes que deben instalarse para que el proyecto funcione correctamente.
+
 Mastodon.py
+pytest
+pandas
+
+#Para que te intale estos requirements, escribir en la terminal: pip install -r requirements.txt
