@@ -1,13 +1,10 @@
-
 # Archivos de configuración de IDEs/editor específicos
 .idea
 .idea/
 
-
 # Directorios de entornos virtuales
 venv
 venv/
-
 
 # Caches de pruebas
 .cache
