@@ -8,3 +8,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+#Revisar archivos y entenderlos
+#Rename variables for easy understanding
