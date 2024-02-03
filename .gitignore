@@ -10,7 +10,7 @@ venv/
 .cache
 .pytest_cache/
 
-# Carpeta ignore con archivo ignore_me
+# Carpeta ignore con archivo ignore_me de EJEMPLO
 ignore/
 ignore/ignore_me
 
