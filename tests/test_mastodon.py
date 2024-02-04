@@ -1,13 +1,14 @@
-
-import pytest
+from datetime import datetime
+from datetime import timedelta
 from unittest.mock import patch, MagicMock
-from datetime import datetime, timedelta
-from proxy.mastodon_proxy import MastodonProxy
-from domain.toots import Toot
-from uses_cases.toot_collector import TootCollector
-from uses_cases.toot_by_language import TootByLanguage
-from repository.language_stats_repository import LanguageStatsRepository
+
 from controller import TootController
+from domain.toots import Toot
+from proxy.mastodon_proxy import MastodonProxy
+from repository.language_stats_repository import LanguageStatsRepository
+from uses_cases.toot_by_language import TootByLanguage
+from uses_cases.toot_collector import TootCollector
+
 
 class TestMastodon:
 
@@ -69,7 +70,8 @@ class TestMastodon:
                 assert collected_toot.username == fake_toot['account']['username'], "Username should match"
                 assert collected_toot.language == fake_toot.get('language', 'unknown'), "Language should match"
                 # Verify the adjustment of created_at by checking it's one hour ahead of the mocked raw toot
-                assert collected_toot.created_at == fake_toot['created_at'].replace(tzinfo=None) + timedelta(hours=1), "created_at should be adjusted correctly"
+                assert collected_toot.created_at == fake_toot['created_at'].replace(tzinfo=None) + timedelta(
+                    hours=1), "created_at should be adjusted correctly"
 
     def test_calculate_language_stats(self):
         # Crear instancias de Toot con diferentes idiomas
@@ -89,7 +91,6 @@ class TestMastodon:
         assert language_stats['es']['count'] == 1, "There should be 1 Spanish toot"
         assert language_stats['en']['last_user'] == 'user3', "The last user for English toots should be user3"
         assert language_stats['es']['last_user'] == 'user2', "The last user for Spanish toots should be user2"
-
 
     @patch('repository.language_stats_repository.pd.DataFrame.to_excel')
     def test_save_language_stats_to_excel(self, mock_to_excel):
@@ -131,4 +132,3 @@ class TestMastodon:
         mock_toot_saver.return_value.save_toots_to_excel.assert_called_once()
         mock_language_stats.assert_called_once()
         mock_language_stats_saver.return_value.save_language_stats_to_excel.assert_called_once()
-
