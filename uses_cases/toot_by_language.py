@@ -1,5 +1,3 @@
-
-
 class TootByLanguage:
     def __init__(self, toots):
         self.toots = toots
