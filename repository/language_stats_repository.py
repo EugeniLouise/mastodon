@@ -15,6 +15,6 @@ class LanguageStatsRepository:
 
         try:
             df_language_stats.to_excel(filename, index=False)
-            print(f"Estadísticas guardadas exitosamente en {filename}.")
+            print(f"Statistics saved in {filename}.")
         except Exception as e:
-            print(f"Error al guardar las estadísticas en {filename}: {e}")
+            print(f"Error saving statistics in {filename}: {e}")
