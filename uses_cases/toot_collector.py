@@ -11,12 +11,12 @@ class TootCollector:
         raw_toots = self.mastodon_proxy.get_latest_toots()
         toots = []
         for raw_toot in raw_toots:
-            created_at_adjusted = raw_toot['created_at'].replace(tzinfo=None) + timedelta(hours=1)
+            created_at_adjusted = raw_toot['created_at'].replace(tzinfo=utc_zone) + timedelta(hours=1)
             toot = Toot(
                 id=raw_toot['id'],
                 content=raw_toot['content'],
                 username=raw_toot['account']['username'],
-                language=raw_toot.get('language', 'unkown'),
+                language=raw_toot.get('language', 'unknown'),
                 created_at=created_at_adjusted
             )
             toots.append(toot)
