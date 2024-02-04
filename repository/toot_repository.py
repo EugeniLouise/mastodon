@@ -1,7 +1,7 @@
-
+import os
 
 import pandas as pd
-import os
+
 
 class TootRepository:
     def save_toots_to_excel(self, toots, filename="toots.xlsx"):
@@ -20,5 +20,3 @@ class TootRepository:
             df = new_df
 
         df.to_excel(filename, index=False)
-
-
