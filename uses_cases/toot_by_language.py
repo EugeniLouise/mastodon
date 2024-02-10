@@ -2,6 +2,7 @@ class TootByLanguage:
     def __init__(self, toots):
         self.toots = toots
 
+    # TODO: mejor pasar los datos por parámetro a la función
     def calculate_language_stats(self):
         language_stats = {}
         for toot in self.toots:

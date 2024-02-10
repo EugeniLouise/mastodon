@@ -1,8 +1,10 @@
-#Especificar las dependencias de paquetes que deben instalarse para que el proyecto funcione correctamente.
-#Para que te instale estos requirements, escribir en la terminal: pip install -r requirements.txt
+# Especificar las dependencias de paquetes que deben instalarse para que el proyecto funcione correctamente.
+# Para que te instale estos requirements, escribir en la terminal: pip install -r requirements.txt
 
-Mastodon.py
-pytest
-pandas
+# Para saber qué carajo tengo instalado y en qué versión ejecuto en la terminal `pip freeze`
+
+Mastodon.py==1.8.1
+pytest==8.0.0
+pandas==2.2.0
 
 
