@@ -1,7 +1,6 @@
 from datetime import timedelta
 
-from domain.toots import Toot
-
+from domain.toots import Toots
 
 class TootCollector:
     def __init__(self, mastodon_proxy):
@@ -12,7 +11,7 @@ class TootCollector:
         toots = []
         for raw_toot in raw_toots:
             created_at_adjusted = raw_toot['created_at'].replace(tzinfo=None) + timedelta(hours=1)
-            toot = Toot(
+            toot = Toots(
                 id=raw_toot['id'],
                 content=raw_toot['content'],
                 username=raw_toot['account']['username'],
