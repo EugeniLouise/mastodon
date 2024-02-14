@@ -9,15 +9,15 @@ class TootController:
     def __init__(self):
         self.mastodon_proxy = MastodonProxy()
         self.toot_collector = TootCollector(self.mastodon_proxy)
-        self.toot_saver = TootRepository()  # TODO: renombrar variable para no confundir
-        self.language_stats_saver = LanguageStatsRepository() # TODO: renombrar variable para no confundir
+        self.toot_repository = TootRepository()
+        self.language_stats_repository = LanguageStatsRepository()
 
     def run(self):
         toots = self.toot_collector.collect_latest_toots()
 
         # Save toots to excel
-        self.toot_saver.save_toots_to_excel(toots)
+        self.toot_repository.save_toots_to_excel(toots)
 
         # Save toot count by language
         language_stats = TootByLanguage(toots).calculate_language_stats()
-        self.language_stats_saver.save_language_stats_to_excel(language_stats)
+        self.language_stats_repository.save_language_stats_to_excel(language_stats)
