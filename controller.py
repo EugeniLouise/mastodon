@@ -19,5 +19,5 @@ class TootController:
         self.toot_repository.save_toots_to_excel(toots)
 
         # Save toot count by language
-        language_stats = TootByLanguage(toots).calculate_language_stats()
+        language_stats = TootByLanguage().calculate_language_stats(toots)
         self.language_stats_repository.save_language_stats_to_excel(language_stats)
