@@ -1,9 +1,7 @@
 class TootByLanguage:
-    def __init__(self, toots):
-        self.toots = toots
 
-    # TODO: mejor pasar los datos por parámetro a la función
-    def calculate_language_stats(self):
+    def calculate_language_stats(self, toots):
+        self.toots = toots
         language_stats = {}
         for toot in self.toots:
             if toot.language not in language_stats:
