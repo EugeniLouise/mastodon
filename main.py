@@ -8,5 +8,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# No es CSV, es XLSM, mea culpa.
