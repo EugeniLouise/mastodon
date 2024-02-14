@@ -3,7 +3,7 @@ from datetime import timedelta
 from unittest.mock import patch, MagicMock
 
 from controller import TootController
-from domain.toots import Toot
+from domain.toots import Toots
 from proxy.mastodon_proxy import MastodonProxy
 from repository.language_stats_repository import LanguageStatsRepository
 from uses_cases.toot_by_language import TootByLanguage
@@ -76,13 +76,13 @@ class TestMastodon:
     def test_calculate_language_stats(self):
         # Crear instancias de Toot con diferentes idiomas
         toots = [
-            Toot(id='1', content='Toot 1', username='user1', language='en', created_at=datetime.now()),
-            Toot(id='2', content='Toot 2', username='user2', language='es', created_at=datetime.now()),
-            Toot(id='3', content='Toot 3', username='user3', language='en', created_at=datetime.now()),
+            Toots(id='1', content='Toot 1', username='user1', language='en', created_at=datetime.now()),
+            Toots(id='2', content='Toot 2', username='user2', language='es', created_at=datetime.now()),
+            Toots(id='3', content='Toot 3', username='user3', language='en', created_at=datetime.now()),
         ]
 
-        toot_by_language = TootByLanguage(toots=toots)
-        language_stats = toot_by_language.calculate_language_stats()
+        toot_by_language = TootByLanguage()
+        language_stats = toot_by_language.calculate_language_stats(toots=toots)
 
         # Verificar que las estadísticas de idioma sean correctas
         assert 'en' in language_stats, "English should be in language stats"
