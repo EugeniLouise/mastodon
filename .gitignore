@@ -6,7 +6,6 @@
 venv
 venv/
 .env
-proxy/credentials.env
 
 # Caches de pruebas
 .cache
