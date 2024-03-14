@@ -11,7 +11,6 @@ Aquest software, després de cada execució guardarà en un directori adient, do
 
 ## Bones pràctiques
 
-Imprescindible conèixer i fer un ús adequat dels seguents conceptes. Necessito que quan m'ho ensenyis em diguis per a què serveixen cadascun d'ells.
 * Fitxer .gitignore
 * Fitxer requirements.txt
 * Utilització dels conceptes de classes adequats. He fet algunes classes d'exemple. cal crear-ne més. Cada classe va al seu arxiu. Els arxius no poden tenir més de 50 línies.
@@ -23,6 +22,3 @@ Imprescindible conèixer i fer un ús adequat dels seguents conceptes. Necessito
 * Utilització d'una classe Repository per a la interacció amb els excels. Aquesta te la deixo més lliure.
 * Emmagatzematge de les credencials en un fitxer de credencials separat. Pot ser un fitxer .py amb les variables i au, pero han d'estar recollidetes en un lloc.
 * Utilització d'una classe Controller/Service/Orchestrator per a orquestrar la resta de classes.
-  
-> [!CAUTION]
-> Molt de ojo amb el chatGPT, és traicioner. Segurament sigui capaç de fer-te l'exercici però et demanaré el perquè de la ubicació de cada línia de codi en cada arxiu.
