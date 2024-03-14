@@ -22,3 +22,4 @@ Aquest software, després de cada execució guardarà en un directori adient, do
 * Utilització d'una classe Repository per a la interacció amb els excels. Aquesta te la deixo més lliure.
 * Emmagatzematge de les credencials en un fitxer de credencials separat. Pot ser un fitxer .py amb les variables i au, pero han d'estar recollidetes en un lloc.
 * Utilització d'una classe Controller/Service/Orchestrator per a orquestrar la resta de classes.
+* 
